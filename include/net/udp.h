@@ -450,7 +450,7 @@ int udpv4_offload_init(void);
 
 void udp_init(void);
 
-static struct static_key udp_encap_needed __read_mostly;
+static struct static_key __maybe_unused udp_encap_needed __read_mostly;
 void udp_encap_enable(void);
 #if IS_ENABLED(CONFIG_IPV6)
 void udpv6_encap_enable(void);
