@@ -211,7 +211,7 @@ static void fpc1022_get_irqNum(struct fpc1022_data *fpc1022)
 
 static int hw_reset(struct fpc1022_data *fpc1022)
 {
-	struct device *dev = fpc1022->dev;
+	struct device __maybe_unused *dev = fpc1022->dev;
 
 	pinctrl_select_state(fpc1022->pinctrl, fpc1022->st_rst_h);
 	usleep_range(FPC1022_RESET_HIGH1_US, FPC1022_RESET_HIGH1_US + 100);
