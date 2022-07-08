@@ -995,7 +995,7 @@ static struct undef_hook ssbs_emulation_hook = {
 	.fn		= ssbs_emulation_handler,
 };
 
-static void cpu_enable_ssbs(const struct arm64_cpu_capabilities *__unused)
+static void __maybe_unused cpu_enable_ssbs(const struct arm64_cpu_capabilities *__unused)
 {
 	static bool undef_hook_registered = false;
 	static DEFINE_SPINLOCK(hook_lock);
