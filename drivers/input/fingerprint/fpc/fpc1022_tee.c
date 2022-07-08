@@ -331,7 +331,7 @@ static ssize_t irq_ack(struct device *device,
 		       struct device_attribute *attribute,
 		       const char *buffer, size_t count)
 {
-	struct fpc1022_data *fpc1022 = dev_get_drvdata(device);
+	struct fpc1022_data __maybe_unused *fpc1022 = dev_get_drvdata(device);
 	return count;
 }
 
