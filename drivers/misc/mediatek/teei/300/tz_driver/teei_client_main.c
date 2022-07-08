@@ -199,7 +199,7 @@ struct timeval etime;
 struct task_struct *teei_switch_task;
 struct task_struct *teei_bdrv_task;
 struct task_struct *teei_log_task;
-static struct cpumask mask = { CPU_BITS_NONE };
+static struct cpumask __maybe_unused mask = { CPU_BITS_NONE };
 static struct class *driver_class;
 static dev_t teei_client_device_no;
 static struct cdev teei_client_cdev;
