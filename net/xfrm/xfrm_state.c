@@ -904,7 +904,7 @@ static void __printf_back_trace(struct xfrm_state_trace *trace, char *tag)
 #endif
 }
 
-static void xfrm_state_print_back_trace(struct xfrm_state *x)
+static void __maybe_unused xfrm_state_print_back_trace(struct xfrm_state *x)
 {
 	char *logtag = "alloc";
 
