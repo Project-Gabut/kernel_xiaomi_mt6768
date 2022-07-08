@@ -294,7 +294,7 @@ int ion_get_domain_id(int from_kernel, int *port)
 static int ion_mm_heap_phys(struct ion_heap *heap, struct ion_buffer *buffer,
 			    ion_phys_addr_t *addr, size_t *len);
 
-static int ion_mm_heap_init_domain(struct ion_mm_buffer_info *buffer_info,
+static int __maybe_unused ion_mm_heap_init_domain(struct ion_mm_buffer_info *buffer_info,
 				   unsigned int domain)
 {
 #if defined(CONFIG_MTK_IOMMU_PGTABLE_EXT) && \
