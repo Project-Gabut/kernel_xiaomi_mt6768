@@ -52,6 +52,8 @@ module_param(wake_boost_duration, short, 0644);
 static bool input_boost_enable = true;
 module_param(input_boost_enable, bool, 0644);
 
+extern int kp_active_mode(void);
+
 enum {
 	SCREEN_OFF,
 	INPUT_BOOST,
@@ -107,10 +109,12 @@ static unsigned int get_min_freq(struct cpufreq_policy *policy)
 {
 	unsigned int freq;
 
-	if (cpumask_test_cpu(policy->cpu, cpu_lp_mask))
-		freq = cpu_freq_min_little;
-	else
-		freq = cpu_freq_min_big;
+	if (kp_active_mode() != 1) {
+	    if (cpumask_test_cpu(policy->cpu, cpu_lp_mask))
+	            freq = cpu_freq_min_little;
+	    else
+	            freq = cpu_freq_min_big;
+	}
 
 	return max(freq, policy->cpuinfo.min_freq);
 }
@@ -132,7 +136,6 @@ static void update_online_cpu_policy(void)
 	put_online_cpus();
 }
 
-extern int kp_active_mode(void);
 static void __cpu_input_boost_kick(struct boost_drv *b)
 {
 	if (test_bit(SCREEN_OFF, &b->state) || kp_active_mode() == 1)
